@@ -6,6 +6,8 @@ function Home() {
     return (
         <Container>
             <Section/>
+            <Section/>
+            <Section/>
         </Container>
     )
 }
@@ -14,5 +16,4 @@ export default Home
 
 const Container = styled.div`
 height:100vh;
-border:1px solid red;
 `

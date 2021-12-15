@@ -1,26 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
+import Fade from 'react-reveal/Fade';
 
-function Section({title,description,leftButtonText,rightButtonText,backgroundImg}) {
+function Section({ title, description, leftButtonText, rightButtonText, backgroundImg }) {
     return (
         <Wrap bgImage={backgroundImg}>
-            <ItemText>
-                <h1>{title}</h1>
-                <p>{description}</p>
-            </ItemText>
+            <Fade bottom>
+                <ItemText>
+                    <h1>{title}</h1>
+                    <p>{description}</p>
+                </ItemText>
+            </Fade>
             <Buttons>
-                <ButtonGroup>
-                    <LeftButton>
-                        {leftButtonText}
-                    </LeftButton>
-                    {rightButtonText && 
-                    <RightButton>
-                        {rightButtonText}
-                    </RightButton>
-                    }
-                    
-                </ButtonGroup>
-                <DownArrow src="/images/down-arrow.svg"/>
+                <Fade bottom>
+                    <ButtonGroup>
+                        <LeftButton>
+                            {leftButtonText}
+                        </LeftButton>
+                        {rightButtonText &&
+                            <RightButton>
+                                {rightButtonText}
+                            </RightButton>
+                        }
+                    </ButtonGroup>
+                </Fade>
+                <DownArrow src="/images/down-arrow.svg" />
             </Buttons>
         </Wrap>
     )
@@ -29,12 +33,13 @@ function Section({title,description,leftButtonText,rightButtonText,backgroundImg
 export default Section
 
 const Wrap = styled.div`
+    z-index:10;
     width:100vw;
     height:100vh;
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
-    background-image:${props=> `url("/images/${props.bgImage}")` };
+    background-image:${props => `url("/images/${props.bgImage}")`};
     display:flex;
     flex-direction:column;
     justify-content:space-between; //for vertical align
@@ -71,10 +76,10 @@ const RightButton = styled(LeftButton)`
     color:black;
     opacity:0.65;
 `
-const DownArrow=styled.img`
+const DownArrow = styled.img`
     height:40px;
     animation: animateDown infinite 1.5s;
 `
-const Buttons=styled.div`
+const Buttons = styled.div`
 
 `

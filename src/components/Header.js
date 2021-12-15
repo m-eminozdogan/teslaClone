@@ -2,29 +2,28 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
-import { TramRounded } from '@mui/icons-material';
 
 function Header() {
+
     const [burgerStatus,setBurgerStatus]=useState(false);
+
     return (
         <Container>
-            <a>
+            <a href='#'>
                 <img src='/images/logo.svg' alt='' />
             </a>
-
             <Menu>
                 <p><a href='#'>Model S</a></p>
                 <p><a href='#'>Model 3</a></p>
                 <p><a href='#'>Model X</a></p>
                 <p><a href='#'>Model Y</a></p>
-
             </Menu>
             <RightMenu>
                 <a href='#'>Shop</a>
                 <a href='#'>Tesla Account</a>
                 <CustomMenu onClick={()=>setBurgerStatus(true)} />
             </RightMenu>
-            <BurgerNav show={burgerStatus}>
+            <BurgerNav show={burgerStatus} >
                 <CloseWrapper>
                     <CustomClose onClick={()=>setBurgerStatus(false)}  />
                 </CloseWrapper>
@@ -71,7 +70,6 @@ const Menu = styled.div`
         font-weight:600;
         text-transform:uppercase;
         padding:0px 10px;
-        
         flex-wrap:nowrap;
     }
     @media (max-width:768px){ //models menu disappear
@@ -105,7 +103,8 @@ const BurgerNav = styled.div`
     display:flex;
     flex-direction:column;
     text-align:start;
-    transform:${props=>props.show?'transformX(0)':'transformX(100%)'};
+    transform: ${props => props.show ? 'translateX(0%)' : 'translateX(100%)' };
+    transition:transform 0.3s ease-in;
     li {
         padding:10px 0;
         border-bottom:1px solid rgba(0,0,0,0.2);
